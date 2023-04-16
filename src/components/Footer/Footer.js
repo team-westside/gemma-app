@@ -27,10 +27,11 @@ const Footer = () => {
             <div className="text-lg">About</div>
           </div>
           <div className="flex flex-col justify-evenly">
-            <div className="text-lg font-bold">Links</div>
-            <div className="text-lg">Products</div>
-            <div className="text-lg">Accesories</div>
-            <div className="text-lg">About</div>
+            <div className="text-lg font-bold">MISC</div>
+            <div className="text-lg">Support</div>
+            <div className="text-lg">Contact Us</div>
+            <div className="text-lg">Policy</div>
+            <div className="text-lg">FAQs</div>
           </div>
         </div>
 
