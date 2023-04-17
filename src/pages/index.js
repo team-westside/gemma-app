@@ -47,17 +47,18 @@ export default function Home() {
       description: "This is a product",
       category: "category 5",
       // image: "/images/product-5.jpg",
-    }
-  ]
+
+    },
+  ];
   return (
     <div className="max-w-[100vw]">
-      {/* <Navbar /> */}
+      <Navbar />
       <div className="flex flex-row gap-x-4 justify-evenly flex-wrap px-2 max-w-[90vw] mx-auto">
         {products.map((product) => (
           <Product key={product.id} product={product} />
         ))}
-
       </div>
+      <Footer />
       {/* <Footer /> */}
     </div>
   );
