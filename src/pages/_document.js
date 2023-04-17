@@ -18,9 +18,9 @@ export default function Document() {
         <meta name="og:title" content="Gemma" />
       </Head>
       <body>
-        <Navbar/>
+        {/* <Navbar/> */}
         <Main />
-        <Footer/>
+        {/* <Footer/> */}
         <NextScript />
       </body>
     </Html>
