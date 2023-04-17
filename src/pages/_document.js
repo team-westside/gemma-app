@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer/Footer";
+import Navbar from "@/components/Navbar/Navbar";
 import { Html, Head, Main, NextScript } from "next/document";
 import { ToastContainer } from "react-toastify";
 
@@ -16,7 +18,9 @@ export default function Document() {
         <meta name="og:title" content="Gemma" />
       </Head>
       <body>
+        <Navbar/>
         <Main />
+        <Footer/>
         <NextScript />
       </body>
     </Html>
