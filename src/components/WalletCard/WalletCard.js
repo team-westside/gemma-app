@@ -151,7 +151,10 @@ const WalletCard = () => {
           <img src={Ethereum.src} className="App-logo w-[20px]" alt="logo" />
           <div className="flex flex-col justify-center">
             <h3 className="font-bold text-lg">Wallet</h3>
-            <h3>ETH {String(userBalance).substring(0, 6)}</h3>
+            <h3>
+              <span className="font-bold">ETH</span>{" "}
+              {String(userBalance).substring(0, 6)}
+            </h3>
           </div>
           {/* <br /> */}
         </div>
