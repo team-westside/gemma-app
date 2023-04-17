@@ -47,6 +47,7 @@ export default function Home() {
       description: "This is a product",
       category: "category 5",
       // image: "/images/product-5.jpg",
+
     },
   ];
   return (
@@ -58,6 +59,7 @@ export default function Home() {
         ))}
       </div>
       <Footer />
+      {/* <Footer /> */}
     </div>
   );
 }
