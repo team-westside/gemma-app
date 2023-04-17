@@ -146,13 +146,13 @@ const WalletCard = ({ setLoggedIn }) => {
         {defaultAccount ? "Connected!!" : "Connect"}
       </button> */}
       <div className="displayAccount">
-        <h4 className="walletAddress">
+        <h4 className="walletAddress ">
           Address:{String(defaultAccount).substring(0, 10)}xxxx
         </h4>
         <div className="flex flex-row items-center justify-center gap-x-4">
+          <h3 className="font-bold text-lg">Wallet</h3>
           <img src={Ethereum.src} className="App-logo w-[20px]" alt="logo" />
           <div className="flex flex-col justify-center">
-            <h3 className="font-bold text-lg">Wallet</h3>
             <h3>
               <span className="font-bold">ETH</span>{" "}
               {String(userBalance).substring(0, 6)}

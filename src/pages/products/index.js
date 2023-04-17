@@ -60,7 +60,7 @@ const product = () => {
   console.log(show, index);
 
   React.useEffect(() => {
-    API.get("/product")
+    API.get("/products/available")
       .then((res) => {
         console.log(res.data);
         setProducts(res.data);
@@ -75,7 +75,7 @@ const product = () => {
         <ProductModal setShow={setShow} product={products[index]} />
       ) : null}
 
-      <div className="flex flex-row gap-x-4 justify-evenly flex-wrap px-2 max-w-[90vw] mx-auto">
+      <div className="flex flex-row gap-x-4 justify-evenly flex-wrap px-2 max-w-[90vw] mx-auto min-h-[70vh]">
         {products?.map((product, idx) => (
           <div
             onClick={() => {

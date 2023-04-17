@@ -2,6 +2,8 @@ import React from "react";
 import image from "../../assets/HomePage/main.svg";
 import image1 from "../../assets/HomePage/FeelGood.svg";
 import product1 from "../../assets/products/product1.svg";
+import CategoryProduct from "@/components/CategoryProduct";
+import Link from "next/link";
 
 const Categories = ({ data }) => {
   return (
@@ -13,19 +15,16 @@ const Categories = ({ data }) => {
             backgroundImage: `url(${image.src})`,
           }}
         >
-          <button className="bg-[#3f3f3f] text-[#f9f9f9] px-[5rem] py-3 absolute left-[4rem] bottom-[6rem]">
-            Shop Now
-          </button>
+          <Link href="\products">
+            <button className="bg-[#3f3f3f] text-[#f9f9f9] px-[5rem] py-3 absolute left-[4rem] bottom-[6rem]">
+              Shop Now
+            </button>
+          </Link>
         </div>
       </div>
       <div className="text-5xl px-[6rem] py-7">Categories</div>
       {data?.map((item) => {
-        return (
-          <div className="text-3xl px-[6.5rem] py-4">
-            {item.categoryName}
-            <div></div>
-          </div>
-        );
+        return <CategoryProduct key={item.id} data={item} />;
       })}
 
       <img className="w-[100vw]" src={image1.src} />

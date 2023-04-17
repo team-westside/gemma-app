@@ -7,7 +7,7 @@ import { AiFillHeart } from "react-icons/ai";
 import WalletCard from "../WalletCard/WalletCard";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import API from "@/services/axios";
 // import * as React from "react";
 import Box from "@mui/material/Box";
 import Avatar from "@mui/material/Avatar";
@@ -18,12 +18,45 @@ import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
+import Link from "next/link";
 // import PersonAdd from "@mui/icons-material/PersonAdd";
 // import Settings from "@mui/icons-material/Settings";
 // import Logout from "@mui/icons-material/Logout";
 
 const Navbar = () => {
-  const items = ["High Jewellery", "Fine Jewellery", "Wedding Jewellery"];
+  const [items, setItems] = React.useState([
+    {
+      categoryName: "High Jewellery",
+      created: 1681731234159,
+      sk: "category#fb51a76d",
+      description: "This is High Jewellery",
+      pk: "gemma",
+      id: "fb51a76d",
+    },
+    {
+      categoryName: "Wedding Jewellery",
+      created: 1681731258092,
+      sk: "category#97dc88d0",
+      description: "Wedding Jewellery says hello",
+      pk: "gemma",
+      id: "97dc88d0",
+    },
+    {
+      categoryName: "Fine Jewellery",
+      created: 1681731246708,
+      sk: "category#10e85fc9",
+      description: "Fine Jewellery it is",
+      pk: "gemma",
+      id: "10e85fc9",
+    },
+  ]);
+  // const items = ["High Jewellery", "Fine Jewellery", "Wedding Jewellery"];
+
+  // React.useEffect(() => {
+  //   API.get("/category").then((res) => {
+  //     setItems(res.data);
+  //   });
+  // }, []);
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
   const [loggedIn, setLoggedIn] = React.useState(false);
@@ -54,11 +87,18 @@ const Navbar = () => {
         <div className="flex flex-row justify-evenly gap-x-10">
           {items.map((item) => {
             return (
-              <div className="text-lg transition-all hover:text-[#F9A826] cursor-pointer">
-                {item}
-              </div>
+              <Link href={`/category/${item.id}`}>
+                <div className="text-lg transition-all hover:text-[#F9A826] cursor-pointer">
+                  {item.categoryName}
+                </div>
+              </Link>
             );
           })}
+          <Link href={`/products`}>
+            <div className="text-lg transition-all hover:text-[#F9A826] cursor-pointer">
+              All Products
+            </div>
+          </Link>
         </div>
 
         <div className="flex flex-row justify-evenly gap-x-3 items-center">
