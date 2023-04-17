@@ -7,8 +7,8 @@ import visa from "../../assets/cards/visa.svg";
 
 const Footer = () => {
   return (
-    <footer className="w-[100vw] flex flex-col px-10 py-4">
-      <div className="flex flex-row">
+    <footer className="w-[100vw] flex flex-col ">
+      <div className="flex flex-row px-10 py-4">
         <div className="flex flex-col basis-[33%] gap-y-3">
           <div className="w-[60%]">
             <img src={logoname.src} alt="logo" className="object-contain" />
@@ -22,9 +22,9 @@ const Footer = () => {
         <div className="flex flex-row basis-[33%] justify-center gap-x-24">
           <div className="flex flex-col justify-evenly">
             <div className="text-lg font-bold">Links</div>
-            <div className="text-lg">Products</div>
-            <div className="text-lg">Accesories</div>
-            <div className="text-lg">About</div>
+            <div className="text-lg">High Jewellery</div>
+            <div className="text-lg">Fine Jewellery </div>
+            <div className="text-lg">Wedding Jewellery</div>
           </div>
           <div className="flex flex-col justify-evenly">
             <div className="text-lg font-bold">MISC</div>
@@ -50,7 +50,7 @@ const Footer = () => {
           <img src={visa.src} alt="visa" className="object-contain w-[90px]" />
         </div>
       </div>
-      <div className="text-center w-[100%]">
+      <div className="text-center bg-[#00000015] w-[100vw]">
         © 2023 Gemma Rights Reserved | (+00) 123 567990 | contact@gemma.com
       </div>
     </footer>

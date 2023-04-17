@@ -1,10 +1,11 @@
 import Image from "next/image";
-import { Inter } from "next/font/google";
+// import { Inter } from "next/font/google";
 import Head from "next/head";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
-import Product from "@/components/Product/Product";
-const inter = Inter({ subsets: ["latin"] });
+import Category from "@/components/Categories/Categories";
+import Categories from "@/components/Categories/Categories";
+// const inter = Inter({ subsets: ["latin"] });
 
 export default function Home() {
   const products = [
@@ -47,19 +48,13 @@ export default function Home() {
       description: "This is a product",
       category: "category 5",
       // image: "/images/product-5.jpg",
-
     },
   ];
   return (
     <div className="max-w-[100vw]">
       <Navbar />
-      <div className="flex flex-row gap-x-4 justify-evenly flex-wrap px-2 max-w-[90vw] mx-auto">
-        {products.map((product) => (
-          <Product key={product.id} product={product} />
-        ))}
-      </div>
+      <Categories />
       <Footer />
-      {/* <Footer /> */}
     </div>
   );
 }

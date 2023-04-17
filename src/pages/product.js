@@ -3,6 +3,7 @@ import ProductModal from "@/components/Product/ProductModal";
 import Product from "@/components/Product/Product";
 import Navbar from "@/components/Navbar/Navbar";
 import Footer from "@/components/Footer/Footer";
+
 const product = () => {
   const products = [
     {
@@ -61,6 +62,7 @@ const product = () => {
       {show ? (
         <ProductModal setShow={setShow} product={products[index]} />
       ) : null}
+
       <div className="flex flex-row gap-x-4 justify-evenly flex-wrap px-2 max-w-[90vw] mx-auto">
         {products.map((product, idx) => (
           <div

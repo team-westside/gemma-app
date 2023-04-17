@@ -8,7 +8,7 @@ import abi from "../../data/jaAssusre.json";
 import { toast } from "react-toastify";
 // const provider = new ethers.providers.Web3Provider(window.Ethereum);
 // const CONTRACT_ADDRESS = process.env.CONTRACT_ADDRESS;
-const WalletCard = () => {
+const WalletCard = ({ setLoggedIn }) => {
   const [errorMessage, setErrorMessage] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
   const [userBalance, setUserBalance] = useState(null);
@@ -76,8 +76,10 @@ const WalletCard = () => {
     if (defaultAccount) {
       const balance = getuserBalance(defaultAccount);
       console.log(balance);
-
+      setLoggedIn(true);
       //   setUserBalance(ethers.utils.formatEther(balance));
+    } else {
+      setLoggedIn(false);
     }
   }, [defaultAccount]);
   //   useEffect(() => {
