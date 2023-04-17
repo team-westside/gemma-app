@@ -145,13 +145,13 @@ const WalletCard = () => {
       </button> */}
       <div className="displayAccount">
         <h4 className="walletAddress">
-          Address:{String(defaultAccount).substring(0, 10)}*******
+          Address:{String(defaultAccount).substring(0, 10)}xxxx
         </h4>
         <div className="flex flex-row items-center justify-center gap-x-4">
           <img src={Ethereum.src} className="App-logo w-[20px]" alt="logo" />
           <div className="flex flex-col justify-center">
             <h3 className="font-bold text-lg">Wallet</h3>
-            <h3>ETH {userBalance}</h3>
+            <h3>ETH {String(userBalance).substring(0, 6)}</h3>
           </div>
           {/* <br /> */}
         </div>
