@@ -23,9 +23,10 @@ import Tooltip from "@mui/material/Tooltip";
 // import Logout from "@mui/icons-material/Logout";
 
 const Navbar = () => {
-  const items = ["Products", "Accesories", "About"];
+  const items = ["High Jewellery", "Fine Jewellery", "Wedding Jewellery"];
   const [anchorEl, setAnchorEl] = React.useState(null);
   const open = Boolean(anchorEl);
+  const [loggedIn, setLoggedIn] = React.useState(false);
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -50,7 +51,7 @@ const Navbar = () => {
         <div className="max-w-[14vw]">
           <img src={logoname.src} alt="logo" className="object-contain" />
         </div>
-        <div className="flex flex-row justify-evenly gap-x-5">
+        <div className="flex flex-row justify-evenly gap-x-10">
           {items.map((item) => {
             return (
               <div className="text-lg transition-all hover:text-[#F9A826] cursor-pointer">
@@ -59,6 +60,7 @@ const Navbar = () => {
             );
           })}
         </div>
+
         <div className="flex flex-row justify-evenly gap-x-3 items-center">
           {/* <WalletCard /> */}
           <React.Fragment>
@@ -74,13 +76,21 @@ const Navbar = () => {
                 <IconButton
                   onClick={handleClick}
                   size="small"
-                  sx={{ ml: 2 }}
+                  sx={{
+                    ml: 2,
+                  }}
                   aria-controls={open ? "account-menu" : undefined}
                   aria-haspopup="true"
                   aria-expanded={open ? "true" : undefined}
                 >
-                  <Avatar sx={{ width: 32, height: 32 }}>
-                    <FaUser className="text-2xl hover:text-[#F9A826] cursor-pointer transition-all" />
+                  <Avatar
+                    sx={{
+                      width: 32,
+                      height: 32,
+                      backgroundColor: loggedIn ? "#A5CC82" : "#FF0000",
+                    }}
+                  >
+                    <FaUser className="text-2xl cursor-pointer transition-all" />
                   </Avatar>
                 </IconButton>
               </Tooltip>
@@ -123,7 +133,7 @@ const Navbar = () => {
               transformOrigin={{ horizontal: "right", vertical: "top" }}
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
-              <WalletCard />
+              <WalletCard setLoggedIn={setLoggedIn} />
               <MenuItem>
                 <Avatar /> Profile
               </MenuItem>
