@@ -1,8 +1,9 @@
 import React from "react";
 import image from "../../assets/HomePage/main.svg";
 import image1 from "../../assets/HomePage/FeelGood.svg";
+import product1 from "../../assets/products/product1.svg";
 
-const Categories = () => {
+const Categories = ({ data }) => {
   return (
     <div className="font-poppins">
       <div>
@@ -16,12 +17,17 @@ const Categories = () => {
             Shop Now
           </button>
         </div>
-        {/* <img className="flex justify-center mx-auto" src={image.src} /> */}
       </div>
       <div className="text-5xl px-[6rem] py-7">Categories</div>
-      <div className="text-3xl px-[6.5rem] py-4">High Jewellery</div>
-      <div className="text-3xl px-[6.5rem] py-4">Fine Jewellery</div>
-      <div className="text-3xl px-[6.5rem] py-4">Wedding Jewellery</div>
+      {data?.map((item) => {
+        return (
+          <div className="text-3xl px-[6.5rem] py-4">
+            {item.categoryName}
+            <div></div>
+          </div>
+        );
+      })}
+
       <img className="w-[100vw]" src={image1.src} />
       <div className="text-2xl font-bold px-[5rem] py-4">You may also like</div>
     </div>

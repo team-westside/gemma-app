@@ -1,4 +1,5 @@
 import Image from "next/image";
+import React from "react";
 // import { Inter } from "next/font/google";
 import Head from "next/head";
 import Navbar from "@/components/Navbar/Navbar";
@@ -6,7 +7,7 @@ import Footer from "@/components/Footer/Footer";
 import Category from "@/components/Categories/Categories";
 import Categories from "@/components/Categories/Categories";
 // const inter = Inter({ subsets: ["latin"] });
-
+import API from "@/services/axios";
 export default function Home() {
   const products = [
     {
@@ -50,10 +51,25 @@ export default function Home() {
       // image: "/images/product-5.jpg",
     },
   ];
+
+  const [categories, setCategories] = React.useState([]);
+
+  React.useEffect(() => {
+    API.get("/category")
+      .then((res) => {
+        console.log(res);
+        setCategories(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+  console.log(categories);
+
   return (
     <div className="max-w-[100vw]">
       <Navbar />
-      <Categories />
+      <Categories data={categories} />
       <Footer />
     </div>
   );
