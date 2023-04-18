@@ -102,3 +102,9 @@ body {
     opacity: 0;
   }
 }
+
+@media print {
+  .no-print {
+    display: none;
+  }
+}

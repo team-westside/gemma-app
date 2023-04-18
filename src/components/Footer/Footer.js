@@ -1,9 +1,7 @@
 import React from "react";
 import logoname from "../../assets/logoname.svg";
-import amex from "../../assets/cards/amex.svg";
-import maestro from "../../assets/cards/maestro.svg";
-import mastercard from "../../assets/cards/mastercard.svg";
-import visa from "../../assets/cards/visa.svg";
+import ethereum from "../../assets/Ethereum.png";
+import metamask from "../../assets/cards/metamask.svg";
 
 const Footer = () => {
   return (
@@ -36,18 +34,17 @@ const Footer = () => {
         </div>
 
         <div className="flex flex-row flex-wrap justify-center basis-[20%] mx-auto">
-          <img src={amex.src} alt="amex" className="object-contain w-[90px]" />
           <img
-            src={maestro.src}
-            alt="maestro"
-            className="object-contain w-[90px]"
+            src={metamask.src}
+            alt="amex"
+            className="object-contain h-[140px] p-3"
           />
+
           <img
-            src={mastercard.src}
-            alt="mastercard"
-            className="object-contain w-[90px]"
+            src={ethereum.src}
+            alt="visa"
+            className="object-contain h-[140px] p-3"
           />
-          <img src={visa.src} alt="visa" className="object-contain w-[90px]" />
         </div>
       </div>
       <div className="text-center bg-[#00000015] w-[100vw]">

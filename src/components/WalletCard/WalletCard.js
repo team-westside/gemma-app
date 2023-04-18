@@ -15,6 +15,7 @@ const WalletCard = ({ setLoggedIn }) => {
   const [provider, setProvider] = useState(null);
   const [accounts, setAccounts] = useState(0);
   const [transaction, setTransaction] = useState(null);
+  const [registered, setRegistered] = useState(false);
   const getUser = async (provider) => {
     const account = await provider.send("eth_requestAccounts").then((data) => {
       //   console.log(data);
@@ -77,6 +78,7 @@ const WalletCard = ({ setLoggedIn }) => {
       const balance = getuserBalance(defaultAccount);
       console.log(balance);
       setLoggedIn(true);
+      localStorage.setItem("gemma-user", defaultAccount);
       //   setUserBalance(ethers.utils.formatEther(balance));
     } else {
       setLoggedIn(false);
@@ -107,8 +109,9 @@ const WalletCard = ({ setLoggedIn }) => {
     console.log("contract created");
     await provider.send("eth_requestAccounts", []); // <- this promps user to connect metamask
     // console.log(signer);
-    // const check = await contract.checkUserRegistration();
-    const check = false;
+    const check = await contract.checkUserRegistration();
+
+    // const check = false;
     console.log(check);
     if (!check) {
       const result = await contract.registerUser().then((data) => {
@@ -119,6 +122,7 @@ const WalletCard = ({ setLoggedIn }) => {
       console.log("Data added to Blockchain!!");
       console.log(result);
     } else {
+      setRegistered(true);
       toast.info("User Already Registered");
     }
   };
@@ -162,7 +166,14 @@ const WalletCard = ({ setLoggedIn }) => {
         </div>
       </div>
       {errorMessage}
-      <div onClick={handleClick}>Click Me</div>
+      {!registered ? (
+        <div
+          onClick={handleClick}
+          className="px-5 py-2 mx-auto border-2 border-black cursor-pointer text-center my-2"
+        >
+          Register User
+        </div>
+      ) : null}
       {/* {provider && stringify(provider)} */}
     </div>
   );

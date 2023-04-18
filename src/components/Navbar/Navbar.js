@@ -19,6 +19,7 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import Tooltip from "@mui/material/Tooltip";
 import Link from "next/link";
+import { MdScreenSearchDesktop } from "react-icons/md";
 // import PersonAdd from "@mui/icons-material/PersonAdd";
 // import Settings from "@mui/icons-material/Settings";
 // import Logout from "@mui/icons-material/Logout";
@@ -103,6 +104,9 @@ const Navbar = () => {
 
         <div className="flex flex-row justify-evenly gap-x-3 items-center">
           {/* <WalletCard /> */}
+          <Link href="/search">
+            <MdScreenSearchDesktop className="text-3xl hover:text-[#F9A826] cursor-pointer transition-all" />
+          </Link>
           <React.Fragment>
             <Box
               sx={{
@@ -174,32 +178,33 @@ const Navbar = () => {
               anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
             >
               <WalletCard setLoggedIn={setLoggedIn} />
-              <MenuItem>
-                <Avatar /> Profile
-              </MenuItem>
-              <MenuItem>
+              <Link href="/console">
+                <MenuItem>
+                  <Avatar /> Console
+                </MenuItem>
+              </Link>
+              {/* <MenuItem>
                 <Avatar /> My account
-              </MenuItem>
+              </MenuItem> */}
               <Divider />
-              <MenuItem>
+              {/* <MenuItem>
                 <ListItemIcon>
-                  {/* <PersonAdd fontSize="small" /> */}
                 </ListItemIcon>
                 Add another account
               </MenuItem>
               <MenuItem>
                 <ListItemIcon>
-                  {/* <Settings fontSize="small" /> */}
                 </ListItemIcon>
                 Settings
               </MenuItem>
               <MenuItem>
-                <ListItemIcon>{/* <Logout fontSize="small" /> */}</ListItemIcon>
+                <ListItemIcon></ListItemIcon>
                 Logout
-              </MenuItem>
+              </MenuItem> */}
             </Menu>
           </React.Fragment>
           {/* <FaUser className="text-2xl hover:text-[#F9A826]  cursor-pointer transition-all" /> */}
+
           <AiFillHeart className="text-2xl hover:text-[#F9A826] cursor-pointer transition-all" />
           <BsCart2 className="text-2xl hover:text-[#F9A826] cursor-pointer transition-all" />
         </div>

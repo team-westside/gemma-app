@@ -34,7 +34,13 @@ const ProductModal = ({ show, setShow, product }) => {
   const [accounts, setAccounts] = useState(0);
   const [transaction, setTransaction] = useState(null);
   const [defaultAccount, setDefaultAccount] = useState(null);
-
+  const [user, setUser] = useState(null);
+  React.useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUser(localStorage.getItem("gemma-user"));
+    }
+  }, []);
+  // console.log(user, product.ownerAddress);
   const getUser = async (provider) => {
     const account = await provider.send("eth_requestAccounts").then((data) => {
       //   console.log(data);
@@ -104,6 +110,8 @@ const ProductModal = ({ show, setShow, product }) => {
         transactionId: txHash.data,
         from: normalData.transaction.from,
         to: normalData.transaction.to,
+        hex_value: txHash.value._hex,
+        hash: txHash.hash,
       };
       // setDbData({
       //   productId: product.id,
@@ -209,7 +217,7 @@ const ProductModal = ({ show, setShow, product }) => {
                     setProviderKey(e.target.value);
                   }}
                 />
-                {product.forSale ? (
+                {product?.forSale ? (
                   <button
                     id="transition-modal-description"
                     className=" mt-3 w-full text-center outline-black hover:bg-[#00000140] bg-black hover:text-black text-white p-3 mx-auto transition-all"
@@ -243,24 +251,26 @@ const ProductModal = ({ show, setShow, product }) => {
         </div>
         <div className="flex flex-row mt-10 w-full gap-x-5">
           <div className="max-w-[20vw] object-fit max-h-[90%] mt-5">
-            <img src={product.productImages[0]} />
+            <img src={product?.productImages[0]} />
           </div>
           <div className="flex flex-col w-full mt-5 justify-between pb-12">
             <div className="flex flex-row justify-between items-center w-[100%] flex-wrap">
               <div className="text-2xl font-bold basis-[60%]">
-                {product.productName}
+                {product?.productName}
               </div>
-              <div className="text-2xl">ETH {product.productPrice}</div>
+              <div className="text-2xl">ETH {product?.productPrice}</div>
             </div>
             <div className="text-xl mt-2 text-[#00000060] flex flex-row flex-wrap">
-              {product.categoryName}
+              {product?.categoryName}
             </div>
             <div className="text-l mt-4 flex flex-row flex-wrap">
-              {product.productDescription}
+              {product?.productDescription}
             </div>
             <div className="flex flex-row justify-center items-center w-[100%] mt-5 gap-x-3 mx-auto">
               <div className="">
-                {product.forSale ? (
+                {product?.forSale &&
+                String(user).toLowerCase() !==
+                  String(product.productOwnerAddress).toLowerCase() ? (
                   <button
                     className="text-[#ffffff] bg-[#323232] text-xs px-10 py-2 border-2 border-black hover:text-[#323232] hover:bg-[#ffffff] hover:border-black-500"
                     onClick={handleOpen}
@@ -275,7 +285,7 @@ const ProductModal = ({ show, setShow, product }) => {
               </div>
 
               <div>
-                <Link href={`/products/${product.id}`}>
+                <Link href={`/products/${product?.id}`}>
                   <div className="text-[#323232] bg-[#ffffff] text-xs px-10 py-2 border-2 border-black border-opacity-100">
                     View More
                   </div>

@@ -6,7 +6,7 @@ const Product = ({ product }) => {
   return (
     <div className="flex flex-col">
       <img
-        src={product.productImages[0]}
+        src={product?.productImages[0]}
         alt="product1"
         className="object-contain w-[200px] md:w-[350px]"
       />
