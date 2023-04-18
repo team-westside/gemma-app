@@ -14,6 +14,7 @@ import Typography from "@mui/material/Typography";
 // import { toast } from "react-toastify";
 import abi from "../../../data/jaAssusre.json";
 import axios from "@/services/axios";
+import Link from "next/link";
 
 const style = {
   position: "absolute",
@@ -30,6 +31,14 @@ const style = {
 const index = () => {
   const router = useRouter();
   const { id } = router.query;
+  const [url, setUrl] = useState("");
+
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      setUrl(window.location.href);
+    }
+  }, []);
+
   const [imageIndex, setImageIndex] = React.useState(0);
 
   // console.log(id);
@@ -354,6 +363,11 @@ const index = () => {
               <div className="text-lg flex flex-row flex-wrap">
                 {productData.productDescription}
               </div>
+              <Link href={url + "/doc"} target="_blank" className="mx-auto">
+                <button className="px-5 py-2 border-2 mx-auto cursor-pointer transition-all hover:bg-[#ebae30] hover:text-white">
+                  View DOC
+                </button>
+              </Link>
               {String(productData.productOwnerAddress).toLowerCase() ==
               String(user).toLowerCase() ? (
                 <div className="flex flex-col">
